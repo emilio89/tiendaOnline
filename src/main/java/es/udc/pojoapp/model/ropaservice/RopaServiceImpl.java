@@ -22,41 +22,47 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class RopaServiceImpl implements RopaService {
     
-    @Autowired
-    private RopaDao ropaDao;      
+    
+  
+  @Autowired
+  private RopaDao ropaDao;      
   
     
-       public Ropa registrarRopa (String nombre, int precio,
+       
+  
+  public Ropa registrarRopa (String nombre, int precio,
             String color, String marca, String descripcion, long idCategoria) 
-            {
+            
+  {
+     
+    Ropa ropa = new Ropa(nombre, precio, color, marca, descripcion, idCategoria);
+    //ropaDao.save(ropa);
+    ropaDao.anadirRopa(ropa);
+    return ropa;
+   }
+       
+       
+  public Ropa registrarRopa (Ropa ropa)
+  {
+    ropaDao.anadirRopa(ropa);
+    ropaDao.save(ropa);
+    return ropa;
+       
+  }
+       
+       
+  @Transactional(readOnly = true)
+  public Ropa findRopa(Long idRopa) throws InstanceNotFoundException 
+  {
+    return ropaDao.find(idRopa);
+  }
 
-         Ropa ropa = new Ropa(nombre, precio, color, marca, descripcion, idCategoria);
-         //ropaDao.save(ropa);
-         ropaDao.anadirRopa(ropa);
-         return ropa;
-       }
-       
-       public Ropa registrarRopa (Ropa ropa)
-       {
-       ropaDao.anadirRopa(ropa);
-       ropaDao.save(ropa);
-       return ropa;
-       
-       }
-       
-       
-       @Transactional(readOnly = true)
-       public Ropa findRopa(Long idRopa) throws InstanceNotFoundException{
-                 return ropaDao.find(idRopa);
-       
-       }
-
-       @Transactional
-       public List<Ropa> listaRopa(){
-       
-       return ropaDao.listaRopa();
-       
-       }
+  @Transactional
+  public List<Ropa> listaRopa()
+  {   
+    return ropaDao.listaRopa();
+    
+  }
        
        
                public void borrarRopa(){
