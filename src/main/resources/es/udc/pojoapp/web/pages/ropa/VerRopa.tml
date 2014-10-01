@@ -1,0 +1,16 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	t:type="Layout" t:pageTitle="title" 
+	t:menuExplanation="menuExplanation">
+  
+      <body>
+        
+  <h1>Ver Ropa</h1>
+        <t:beandisplay object="ropa"/>
+
+
+          <t:actionlink type="button" t:id="anadir" context="ropa.idRopa">Añadir a Carrito</t:actionlink>
+
+             </body>
+  
+    
+</html>

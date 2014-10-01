@@ -1,0 +1,36 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter"
+	t:type="Layout" t:pageTitle="title">
+<body>
+
+<p class="welcome">
+    ${message:welcome}
+</p>
+   <h1>Lista Roupa </h1>
+
+      <t:grid source="listaRopa" row="ropa" add="anadir">
+          <p:nombreCell>
+          <t:pagelink page="Ropa/VerRopa" context="ropa.idRopa">${ropa.nombre}</t:pagelink>
+          </p:nombreCell>
+              <p:anadirCell>
+          <t:actionlink t:id="anadir" context="ropa.idRopa">Añadir a Carrito</t:actionlink>
+        </p:anadirCell>
+        </t:grid>
+
+
+  		<t:if test="siHayCarrito">
+                  <h2>Carrito</h2>
+                  <t:grid source="carrito.productos" >
+                      </t:grid>
+
+          
+		 
+          <h3>PRECIO TOTAL DEL CARRITO ${precioCarrito}</h3>
+             <t:pagelink page="Pedido/VerPedido" context="carrito">TRAMITAR CARRITO</t:pagelink>
+    
+      <p:else>
+        <h3>El Carrito Está vacio!!</h3> 
+            </p:else>
+</t:if>  
+</body>   
+   
+</html>

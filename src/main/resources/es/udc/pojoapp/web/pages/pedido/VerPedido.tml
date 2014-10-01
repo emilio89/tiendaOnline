@@ -1,0 +1,41 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter"
+	t:type="Layout" t:pageTitle="title"> 
+  <head>
+	<link rel="StyleSheet" href="${context:/css/styles.css}"
+		  type="text/css" media="all"/>
+</head>
+  
+  
+  <body>
+    
+    <h3>PASO 1 DE 5 ... Este es el pedido que tienes actualmente, deseas tramitarlo...?</h3>
+    
+     <t:if test="Hay">
+       
+     <t:grid source="Productos" >         
+     
+     </t:grid>
+       <p:else>
+       <h3>El Carrito Está vacio!!</h3> 
+       </p:else>
+      </t:if>
+  
+  <form  t:type="Form" t:id="borrarCarritoForm">
+	<div class="button">
+		<input type="submit" value="Borrar Carrito" />
+	</div>
+  </form>
+  
+  
+  <form  t:type="Form" t:id="tramitarPedidoForm">
+	<div class="button">
+		<input type="submit" value="Tramitar Pedido" />
+	</div>
+  </form>
+  
+  
+  
+
+  
+  </body>
+</html>

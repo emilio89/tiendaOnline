@@ -1,0 +1,80 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package es.udc.pojoapp.model.stocktalla;
+
+import es.udc.pojoapp.model.ropa.Ropa;
+import javax.persistence.*;
+import javax.persistence.SequenceGenerator;
+
+/**
+ *
+ * @author emilio
+ */
+@Entity
+public class StockTalla {
+   private int idStockTalla;
+   private String talla;
+   private int stock;
+   
+   
+   private Ropa ropa;
+   
+   public StockTalla(){};
+   
+   public StockTalla(String talla, int stock, Ropa ropa) {
+        this.talla = talla;
+        this.stock = stock;
+        this.ropa= ropa;
+    }
+@Column(name = "idStockTalla")
+@SequenceGenerator( // It only takes effect for
+name = "idStockTallaGenerator", // databases providing identifier
+sequenceName = "StockTallaSeq")
+// generators.       
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO, generator = "idStockTallaGenerator")
+    public int getIdStockTalla() {
+        return idStockTalla;
+    }
+
+    public void setIdStockTalla(int idStockTalla) {
+        this.idStockTalla = idStockTalla;
+    }
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    //Non me interesa ter o stocktalla na ropa.
+   @ManyToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(name="idRopa")
+    public Ropa getRopa() {
+        return ropa;
+    }
+
+    public void setRopa(Ropa ropa) {
+        this.ropa = ropa;
+    }
+   
+   
+   
+   
+   
+   
+}
