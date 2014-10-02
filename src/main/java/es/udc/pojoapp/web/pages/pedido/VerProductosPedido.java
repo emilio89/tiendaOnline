@@ -9,7 +9,10 @@ import es.udc.pojoapp.model.lineapedido.LineaPedido;
 import es.udc.pojoapp.model.lineapedidoservice.LineaPedidoService;
 import es.udc.pojoapp.model.pedido.Pedido;
 import es.udc.pojoapp.model.pedidoservice.PedidoService;
+import es.udc.pojoapp.model.ropa.Ropa;
+import es.udc.pojoapp.model.ropaservice.RopaService;
 import es.udc.pojoapp.web.pages.Index;
+import java.util.Iterator;
 import java.util.List;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
@@ -37,6 +40,9 @@ public class VerProductosPedido {
   
 @Inject
 private LineaPedidoService lineaPedidoService;
+
+@Inject
+private RopaService ropaService;
 
 
 
@@ -76,13 +82,22 @@ private Form comprobarStockForm;
   }
   
   
-  void onValidateFromcomprobarStockForm (){
+  void onValidateFromcomprobarStockForm () throws InstanceNotFoundException{
 
     //Esto hai que Hacerlo con EL DAO es decir un metodo UPDATE!!
-    pedido.setEstado("Enviado");
+    
+    List<LineaPedido> lineas = pedido.getLineaPedidos();
+    Iterator i = lineas.iterator();
+    LineaPedido lineaPedido = null;
+    
+    while (i.hasNext()) {
 
-
-
+       LineaPedido lineaActual = (LineaPedido)i.next();
+       Ropa ropaActual = ropaService.findRopa(lineaActual.getIdRopa());
+    
+      }
+    
+    pedidoService.actualizarEstado(pedido.getIdPedido(), "Enviado");
 
     }
 

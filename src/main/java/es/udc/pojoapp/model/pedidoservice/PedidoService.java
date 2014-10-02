@@ -19,6 +19,7 @@ public interface PedidoService {
   public List<Pedido> listaPedidos();
   public Pedido buscarPedido (long idPedido) throws InstanceNotFoundException;
   public List<LineaPedido> listaPedidosLineas(long idPedido);
+  public void actualizarEstado (long idPedido, String estado) throws InstanceNotFoundException;
   
   
   

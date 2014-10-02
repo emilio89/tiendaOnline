@@ -50,7 +50,15 @@ public class PedidoServiceImpl implements PedidoService {
      return pedidoDao.find(idPedido);
      }
      
+     
+     
+     
+    public void actualizarEstado (long idPedido, String estado) throws InstanceNotFoundException {
+      Pedido ped = pedidoDao.find(idPedido);
+      ped.setEstado(estado);
+
     
+    }
      
      
 

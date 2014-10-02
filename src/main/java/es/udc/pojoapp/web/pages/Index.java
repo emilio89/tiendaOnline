@@ -81,11 +81,11 @@ public class Index {
     
      void onActionFromAnadir(long idRopa) throws InstanceNotFoundException
     {
-      
+      /*
       Ropa ropa = ropaService.findRopa(idRopa);
       LineaCarrito lineaCarrito = new LineaCarrito 
               (ropa.getPrecio(),ropa);
-      carrito.anadirProducto(lineaCarrito); 
+      carrito.anadirProducto(lineaCarrito); */
  
     } 
 

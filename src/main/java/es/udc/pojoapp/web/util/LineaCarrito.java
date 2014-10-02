@@ -5,6 +5,7 @@
 package es.udc.pojoapp.web.util;
 
 import es.udc.pojoapp.model.ropa.Ropa;
+import es.udc.pojoapp.model.stocktalla.StockTalla;
 
 /**
  *
@@ -16,13 +17,14 @@ public class LineaCarrito {
   private int precio;
   private int cantidad = 1;
   private Ropa ropa;
+  private long idStockTalla;
   
 
   
-  public LineaCarrito(int precio, Ropa ropa) {
-    
+  public LineaCarrito(int precio, Ropa ropa, long idStockTalla) {
     this.precio = precio;
     this.ropa = ropa;
+    this.idStockTalla = idStockTalla;
   }
 
   public int getPrecio() {
@@ -56,7 +58,16 @@ public class LineaCarrito {
   public void setNombreRopa(String nombreRopa) {
     this.nombreRopa = nombreRopa;
   }
-  
+
+  public long getIdStockTalla() {
+    return idStockTalla;
+  }
+
+  public void setIdStockTalla(long idStockTalla) {
+    this.idStockTalla = idStockTalla;
+  }
+
+ 
   
   
   

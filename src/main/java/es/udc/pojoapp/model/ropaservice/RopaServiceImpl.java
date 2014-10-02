@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package es.udc.pojoapp.model.ropaservice;
 
@@ -65,26 +61,27 @@ public class RopaServiceImpl implements RopaService {
   }
        
        
-               public void borrarRopa(){
-               
-               
-               }
+   public void borrarRopa(){
 
-
-       
-       public void actualizarRopa(long idRopa, String nombre, int precio,
-            String color, String marca, String descripcion)
-               throws InstanceNotFoundException {
-        
-         Ropa ropa = ropaDao.find(idRopa);
-         ropa.setNombre(nombre);
-         ropa.setPrecio(precio);
-         ropa.setColor(color);
-         ropa.setMarca(marca);
-         ropa.setDescripcion(descripcion);
-                
-       
-       }
+     
+    }
     
+  public void actualizarRopa(long idRopa, String nombre, int precio,
+            String color, String marca, String descripcion)
+               throws InstanceNotFoundException 
+  {
+        
+    Ropa ropa = ropaDao.find(idRopa);
+    ropa.setNombre(nombre);
+    ropa.setPrecio(precio);
+    ropa.setColor(color);
+    ropa.setMarca(marca);
+    ropa.setDescripcion(descripcion);
+ 
+   }
+ 
+  
+  
+  
 }
 

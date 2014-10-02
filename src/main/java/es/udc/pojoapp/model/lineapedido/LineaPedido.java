@@ -7,8 +7,8 @@
 package es.udc.pojoapp.model.lineapedido;
 
 import es.udc.pojoapp.model.pedido.Pedido;
+import es.udc.pojoapp.model.stocktalla.StockTalla;
 import javax.persistence.*;
-
 /**
  *
  * @author emilio
@@ -20,13 +20,15 @@ public class LineaPedido {
     private int precioUnitario;
     private int numeroUnidades;
     
+    private long idStockTalla;
     private Pedido pedido;
     private long idRopa;
     
     public LineaPedido() {}
 
-    public LineaPedido(Pedido pedido, long idRopa,int precioUnitario, int numeroUnidades) {
+    public LineaPedido(Pedido pedido, long idStockTalla, long idRopa,int precioUnitario, int numeroUnidades) {
         this.pedido = pedido;
+        this.idStockTalla = idStockTalla;
         this.idRopa = idRopa;
         this.precioUnitario = precioUnitario;
         this.numeroUnidades = numeroUnidades;
@@ -73,7 +75,6 @@ public class LineaPedido {
   public void setPedido(Pedido pedido) {
     this.pedido = pedido;
   }
-
   public long getIdRopa() {
     return idRopa;
   }
@@ -81,6 +82,22 @@ public class LineaPedido {
   public void setIdRopa(long idRopa) {
     this.idRopa = idRopa;
   }
+
+  public long getIdStockTalla() {
+    return idStockTalla;
+  }
+
+  public void setIdStockTalla(long idStockTalla) {
+    this.idStockTalla = idStockTalla;
+  }
+
+ @Override
+  public String toString() {
+    return String.valueOf(this.getIdLineaPedido()); 
+  }
+
+
+  
 
  
     

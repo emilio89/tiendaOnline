@@ -22,7 +22,8 @@
      <a href="#" t:type="PageLink" t:page="categoria/CrearCategoria">${message:menu-crearCategoria}</a> -
      <a href="#" t:type="PageLink" t:page="categoria/ModificarCategoria">${message:menu-modificarCategoria}</a> -
      <a href="#" t:type="PageLink" t:page="etiqueta/CrearEtiqueta">${message:menu-crearEtiqueta}</a> - 
-     <a href="#" t:type="PageLink" t:page="AdministracionEtiquetas">${message:menu-etiqueta}</a> 
+     <a href="#" t:type="PageLink" t:page="AdministracionEtiquetas">${message:menu-etiqueta}</a> -
+     <a href="#" t:type="PageLink" t:page="pedido/VerPedidosTramitado">${message:menu-verPedidos}</a> 
      </span>
 
 </body>

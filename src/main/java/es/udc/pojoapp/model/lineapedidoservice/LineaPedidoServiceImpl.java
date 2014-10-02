@@ -30,7 +30,7 @@ public class  LineaPedidoServiceImpl implements LineaPedidoService{
         while (i.hasNext()) {     
        LineaCarrito linea = (LineaCarrito)i.next();
        LineaPedido lineaPedido = new LineaPedido
-               (pedido,linea.getRopa().getIdRopa(),linea.getPrecio(),linea.getCantidad());
+               (pedido, linea.getIdStockTalla(),linea.getRopa().getIdRopa(),linea.getPrecio(),linea.getCantidad());
        
        pedido.addLineaPedido(lineaPedido);
        lineaPedidoDao.anadirLineaPedido(lineaPedido);
@@ -42,10 +42,9 @@ public class  LineaPedidoServiceImpl implements LineaPedidoService{
   
   } 
       
-        public List<LineaPedido> listarLineasPorIdPedido (long idPedido) {
-        
-        
-       return lineaPedidoDao.ListarLineasPedido(idPedido);
+  public List<LineaPedido> listarLineasPorIdPedido (long idPedido) {
+    
+    return lineaPedidoDao.ListarLineasPedido(idPedido);
         
         
         }

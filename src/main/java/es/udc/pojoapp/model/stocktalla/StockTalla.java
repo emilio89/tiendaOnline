@@ -16,7 +16,7 @@ import javax.persistence.SequenceGenerator;
  */
 @Entity
 public class StockTalla {
-   private int idStockTalla;
+   private long idStockTalla;
    private String talla;
    private int stock;
    
@@ -37,11 +37,11 @@ sequenceName = "StockTallaSeq")
 // generators.       
 @Id
 @GeneratedValue(strategy = GenerationType.AUTO, generator = "idStockTallaGenerator")
-    public int getIdStockTalla() {
+    public long getIdStockTalla() {
         return idStockTalla;
     }
 
-    public void setIdStockTalla(int idStockTalla) {
+    public void setIdStockTalla(long idStockTalla) {
         this.idStockTalla = idStockTalla;
     }
 
@@ -72,6 +72,11 @@ sequenceName = "StockTallaSeq")
         this.ropa = ropa;
     }
    
+    
+     @Override
+  public String toString() {
+    return String.valueOf(this.getIdStockTalla()); 
+  }
    
    
    

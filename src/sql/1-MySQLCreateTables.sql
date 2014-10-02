@@ -5,12 +5,14 @@
 DROP TABLE PingTable;
 CREATE TABLE PingTable (foo CHAR(1));
 
+
+DROP TABLE LineaPedido;
+
 DROP TABLE Comentario;
 DROP TABLE StockTalla;
 DROP TABLE Descuento;
 
 DROP TABLE Etiqueta;
-DROP TABLE LineaPedido;
 
 DROP TABLE Pedido;
 
@@ -181,7 +183,9 @@ CREATE TABLE LineaPedido (
     numeroUnidades INT NOT NULL, 
     idPedido BIGINT NOT NULL,
     idRopa BIGINT NOT NULL,
+    idStockTalla BIGINT NOT NULL,
 
+    CONSTRAINT idStockTallaFK FOREIGN KEY (idStockTalla) REFERENCES StockTalla(idStockTalla),
     CONSTRAINT idRopa4FK FOREIGN KEY (idRopa) REFERENCES Ropa(idRopa),
     CONSTRAINT idPedidoFK FOREIGN KEY (idPedido) REFERENCES Pedido (idPedido),
     CONSTRAINT LineaPedido_PK PRIMARY KEY (idLineaPedido))
