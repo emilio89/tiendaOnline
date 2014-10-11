@@ -7,13 +7,11 @@
 </p>
    <h1>Lista Roupa </h1>
 
-      <t:grid source="listaRopa" row="ropa" add="anadir">
+      <t:grid source="listaRopa" row="ropa">
           <p:nombreCell>
           <t:pagelink page="Ropa/VerRopa" context="ropa.idRopa">${ropa.nombre}</t:pagelink>
           </p:nombreCell>
-              <p:anadirCell>
-          <t:actionlink t:id="anadir" context="ropa.idRopa">Añadir a Carrito</t:actionlink>
-        </p:anadirCell>
+              
         </t:grid>
 
 
@@ -30,7 +28,41 @@
       <p:else>
         <h3>El Carrito Está vacio!!</h3> 
             </p:else>
-</t:if>  
+</t:if> 
+
+        <h3>me aparecerá la direccion???!! ${direccion}</h3> 
+
+      <t:grid source="listaAdjunto" row="Adjunto">
+         
+              
+        </t:grid>
+
+            <t:loop source="listaAdjunto" value="Adjunto" >
+               
+            </t:loop>
+
+
+    <div class="eg">
+        <table class="grid">
+            <thead>
+                <tr>
+                    <th>Ruta</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+               <tr t:type="Loop" t:source="listaAdjunto" t:value="Adjunto">
+               
+            <td><img src="${adjunto.nombreAdjunto}" /></td>
+
+                   
+                </tr>
+            </tbody>
+        </table>
+     </div>
+
+                
+
 </body>   
    
 </html>

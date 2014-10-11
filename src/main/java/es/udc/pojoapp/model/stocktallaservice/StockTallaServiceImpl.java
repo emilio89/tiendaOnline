@@ -65,12 +65,21 @@ public class StockTallaServiceImpl implements StockTallaService {
        }
        
       
- @Transactional
+      @Transactional
        public List<StockTalla> listaStockTalla(long idRopa){
        
        return stockTallaDao.listaStockTalla(idRopa);
        
        }
+      
+      
+      public void actualizarStock (long idStockTalla, int unidades) throws InstanceNotFoundException {
+      
+        StockTalla sto = stockTallaDao.find(idStockTalla);
+        sto.setStock(unidades);
+      
+      
+      }
        
 
   /*     

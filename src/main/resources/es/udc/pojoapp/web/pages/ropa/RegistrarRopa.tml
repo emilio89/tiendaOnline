@@ -53,8 +53,13 @@
 	   </div>
 	    <div class="field">    
            Selecciona categoria <t:select  t:id="categoria" value="idCategoria" model="categoriaSelectModel"  />
-           </div>
-           
+             </div> 
+           <div class="field"> 
+              
+               <input t:type="upload" t:id="file" t:value="file" validate="required"/>
+
+            </div>
+
     
 
            <h1> AÑADIR STOCK</h1> 

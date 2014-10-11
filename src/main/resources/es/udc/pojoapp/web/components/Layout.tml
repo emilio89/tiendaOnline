@@ -57,6 +57,7 @@
    <span id="menuLinks">
 
      <a href="#" t:type="PageLink" t:page="Administracion">${message:menu-Administracion}</a> -
+     <a href="#" t:type="PageLink" t:page="Index">INICIO</a> -
 
      </span>
   

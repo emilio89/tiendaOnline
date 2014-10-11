@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package es.udc.pojoapp.model.adjunto;
 
 import es.udc.pojoapp.model.ropa.Ropa;
@@ -15,6 +14,8 @@ import javax.persistence.*;
  */
 @Entity
 public class Adjunto  {
+  
+  
     private long idAdjunto;
     private String nombreAdjunto;
     private Ropa ropa;
@@ -49,8 +50,9 @@ public class Adjunto  {
         this.nombreAdjunto = nombreAdjunto;
     }
 
-  @ManyToOne
-  public Ropa getRopa() {
+ @ManyToOne(optional=false, fetch=FetchType.EAGER)
+    @JoinColumn(name="idRopa")
+    public Ropa getRopa() {
     return ropa;
   }
 

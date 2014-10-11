@@ -31,6 +31,13 @@ INSERT INTO Comentario VALUES (2, 'Comentario sobre as medias do primark con id-
 INSERT INTO Comentario VALUES (3, 'Comentarioooooooooo sobre o tenis do nike con id-4', 7, 4);
 
 
+-- SI TENGO BLOB EN CREATETABLES NO PUEDO HACER ESTO.
+-- INSERT INTO Adjunto VALUES (1,'/img/New_Balance1.png',4);
+-- INSERT INTO Adjunto VALUES (2,'../../../img/New_Balance2.png',4);
+-- INSERT INTO Adjunto VALUES (3,'/../../img/New_Balance3.png',4);
+
+
+
 
 
 

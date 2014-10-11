@@ -26,11 +26,15 @@ public class Carrito {
   }
 
 
+  /*AÑADO UNA LINEA AL CARRITO NO PERSISTENTE
+   * SI EL CARRITO YA TIENE ESE IDSTOCKTALLA LO QUE HACE ES SUMARLE UNO
+   * A LA CANTIDAD
+   */
   public void anadirProducto (LineaCarrito lineaCarrito) {
-    long idrop = lineaCarrito.getRopa().getIdRopa();
+    long idsto = lineaCarrito.getIdStockTalla();
  
-    if (buscarCarrito(idrop) != null ) {
-        buscarCarrito(idrop).setCantidad(1);
+    if (buscarCarrito(idsto) != null ) {
+        buscarCarrito(idsto).setCantidad(1);
     }
     else { productos.add(lineaCarrito);
     
@@ -63,7 +67,7 @@ public class Carrito {
   
   
   
-  public LineaCarrito buscarCarrito (long idropa) {
+  public LineaCarrito buscarCarrito (long idStockTalla) {
     
   Iterator i = productos.iterator();
   LineaCarrito lineaCarrito = null;
@@ -72,7 +76,7 @@ public class Carrito {
       
        LineaCarrito linea = (LineaCarrito)i.next();
        
-       if (linea.getRopa().getIdRopa() == idropa)
+       if (linea.getIdStockTalla() == idStockTalla)
           {
             lineaCarrito = linea;
             break;

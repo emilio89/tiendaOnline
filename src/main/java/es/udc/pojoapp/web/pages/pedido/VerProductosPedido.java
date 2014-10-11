@@ -11,6 +11,8 @@ import es.udc.pojoapp.model.pedido.Pedido;
 import es.udc.pojoapp.model.pedidoservice.PedidoService;
 import es.udc.pojoapp.model.ropa.Ropa;
 import es.udc.pojoapp.model.ropaservice.RopaService;
+import es.udc.pojoapp.model.stocktalla.StockTalla;
+import es.udc.pojoapp.model.stocktallaservice.StockTallaService;
 import es.udc.pojoapp.web.pages.Index;
 import java.util.Iterator;
 import java.util.List;
@@ -40,6 +42,9 @@ public class VerProductosPedido {
   
 @Inject
 private LineaPedidoService lineaPedidoService;
+
+@Inject
+private StockTallaService stockTallaService;
 
 @Inject
 private RopaService ropaService;
@@ -93,11 +98,26 @@ private Form comprobarStockForm;
     while (i.hasNext()) {
 
        LineaPedido lineaActual = (LineaPedido)i.next();
-       Ropa ropaActual = ropaService.findRopa(lineaActual.getIdRopa());
-    
+       StockTalla stock = stockTallaService.findStockTalla(lineaActual.getIdStockTalla());
+       
+       if (stock.getStock() < lineaActual.getNumeroUnidades()){
+         
+          Ropa ropa = ropaService.findRopa(lineaActual.getIdRopa());
+          pedidoService.actualizarEstado(pedido.getIdPedido(),ropa.getNombre() + " Producto Sin STOCK");
+          
+          
+       } 
+       else {
+         stockTallaService.actualizarStock
+             (stock.getIdStockTalla(), stock.getStock() - lineaActual.getNumeroUnidades());
+         pedidoService.actualizarEstado(pedido.getIdPedido(), "Enviado");
+         
+       
+       }
+
+        
       }
     
-    pedidoService.actualizarEstado(pedido.getIdPedido(), "Enviado");
 
     }
 

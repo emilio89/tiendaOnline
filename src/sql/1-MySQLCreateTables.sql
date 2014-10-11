@@ -9,6 +9,8 @@ CREATE TABLE PingTable (foo CHAR(1));
 DROP TABLE LineaPedido;
 
 DROP TABLE Comentario;
+DROP TABLE Adjunto;
+
 DROP TABLE StockTalla;
 DROP TABLE Descuento;
 
@@ -17,7 +19,6 @@ DROP TABLE Etiqueta;
 DROP TABLE Pedido;
 
 DROP TABLE Ropa;
-DROP TABLE Adjunto;
 
 DROP TABLE PuntosExtra;
 
@@ -104,9 +105,11 @@ CREATE INDEX StockTallaIndexByIdStockTalla ON StockTalla (idStockTalla);
 
 CREATE TABLE Adjunto (
     idAdjunto BIGINT NOT NULL AUTO_INCREMENT,
-    nombreAdjunto VARCHAR(30) COLLATE latin1_bin NOT NULL,
+    nombreAdjunto VARCHAR(190) COLLATE latin1_bin NOT NULL,
+    idRopa BIGINT NOT NULL,
 
-    
+
+    CONSTRAINT idRopa5FG FOREIGN KEY(idRopa) REFERENCES Ropa (idRopa),
     CONSTRAINT Adjunto_PK PRIMARY KEY (idAdjunto))
     ENGINE = InnoDB;
 CREATE INDEX AdjuntoIndexByIdAdjunto ON Adjunto (idAdjunto);

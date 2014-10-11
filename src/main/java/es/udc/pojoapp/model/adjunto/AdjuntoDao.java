@@ -8,6 +8,7 @@ package es.udc.pojoapp.model.adjunto;
 
 import es.udc.pojo.modelutil.dao.GenericDao;
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import java.util.List;
 
 /**
  *
@@ -22,5 +23,5 @@ public interface AdjuntoDao extends GenericDao<Adjunto, Long>{
      */
   
       public Adjunto findByNombreAdjunto(String nombreAdjunto) throws InstanceNotFoundException;
-
+      public List<Adjunto> listaAdjunto () ;
 }

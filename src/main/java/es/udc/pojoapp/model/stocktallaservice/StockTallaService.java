@@ -35,6 +35,9 @@ public interface StockTallaService {
         public List<StockTalla> listaStockTalla();
         public List<StockTalla> listaStockTalla(long idRopa);
         
+       public void actualizarStock (long idStockTalla, int unidades) throws InstanceNotFoundException;
+
+        
 
         
     

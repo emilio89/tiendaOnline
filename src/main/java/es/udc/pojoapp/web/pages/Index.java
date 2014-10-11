@@ -1,24 +1,40 @@
 package es.udc.pojoapp.web.pages;
 
-import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import es.udc.pojoapp.model.adjunto.Adjunto;
+import es.udc.pojoapp.model.adjuntoservice.AdjuntoService;
 import es.udc.pojoapp.model.ropa.Ropa;
 import es.udc.pojoapp.model.ropaservice.RopaService;
 import es.udc.pojoapp.web.util.Carrito;
-import es.udc.pojoapp.web.util.LineaCarrito;
 import java.util.List;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.upload.services.UploadedFile;
 
 public class Index {
        
     @Property
     private Ropa ropa;
     
+    @Property
+    private Adjunto adjunto;
+        
+    @Property
+    String nombreAdjunto;
+
+    String direccion ;
+    
     private int precioCarrito=0;
+    
+    
+    
     
      @Inject
     private RopaService ropaService;
+     
+     @Inject
+     private AdjuntoService adjuntoService;
+            
      
      @Property
      @SessionState(create=false)
@@ -30,20 +46,23 @@ public class Index {
     return ropaService.listaRopa();
   }
 
+    public List<Adjunto> getListaAdjunto() {
+      return adjuntoService.listaAdjuntos();
+    }
    
     public List <Ropa> getRopas() {
     
-    return ropaService.listaRopa();
+      return ropaService.listaRopa();
     
     }
     
     public void getSiHayCarrito () {
     
-    if (carrito.getProductos().isEmpty()) {
-     siHayCarrito= false;
-    }else {
-      siHayCarrito = true;
-    }
+      if (carrito.getProductos().isEmpty()) {
+       siHayCarrito= false;
+      }else {
+        siHayCarrito = true;
+      }
     
     
     }
@@ -59,6 +78,16 @@ public class Index {
   public void setSiHayCarrito(boolean siHayCarrito) {
     this.siHayCarrito = siHayCarrito;
   }
+
+  
+  
+  public String getDireccion() {
+    return   System.getProperty("user.dir");
+  }
+
+  public void setDireccion(String direccion) {
+    this.direccion = direccion;
+  }
     
     
     
@@ -71,24 +100,7 @@ public class Index {
     this.precioCarrito = precioCarrito;
   }
 
-    
-
-
- 
-
-
-
-    
-     void onActionFromAnadir(long idRopa) throws InstanceNotFoundException
-    {
-      /*
-      Ropa ropa = ropaService.findRopa(idRopa);
-      LineaCarrito lineaCarrito = new LineaCarrito 
-              (ropa.getPrecio(),ropa);
-      carrito.anadirProducto(lineaCarrito); */
- 
-    } 
-
+   
 
      
 }

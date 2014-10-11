@@ -20,6 +20,7 @@ import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.SelectModelFactory;
+import org.apache.tapestry5.upload.services.UploadedFile;
 
 /**
  *
@@ -46,6 +47,8 @@ public class RegistrarRopa {
     @Property
     private String nombreAdjunto;
     
+    @Property    
+    private UploadedFile file;
     
     @Property
     private long idCategoria;
@@ -95,8 +98,11 @@ public class RegistrarRopa {
       if (!registrarRopaForm.isValid()) 
           {
            return;
-          }
-      File archivo = new File ("/Users/Emilio/Dropbox/Facultad/PFC/pojo-app/img" );
+          }      
+      File copied = new File("/Users/Emilio/Dropbox/Facultad/PFC/pojo-app/img/" + file.getFileName());
+
+      file.write(copied);
+
       Ropa ropa = ropaService.registrarRopa(nombre, precio, color, marca, 
                   descripcion, idCategoria);   
       
