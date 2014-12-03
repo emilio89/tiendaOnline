@@ -50,7 +50,7 @@ public class Adjunto  {
         this.nombreAdjunto = nombreAdjunto;
     }
 
- @ManyToOne(optional=false, fetch=FetchType.EAGER)
+ @ManyToOne(optional=false, fetch=FetchType.LAZY)
     @JoinColumn(name="idRopa")
     public Ropa getRopa() {
     return ropa;

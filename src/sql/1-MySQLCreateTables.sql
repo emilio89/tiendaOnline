@@ -18,6 +18,9 @@ DROP TABLE Etiqueta;
 
 DROP TABLE Pedido;
 
+DROP TABLE Recomendacion;
+
+
 DROP TABLE Ropa;
 
 DROP TABLE PuntosExtra;
@@ -25,7 +28,6 @@ DROP TABLE PuntosExtra;
 
 
 DROP TABLE Novedad;
-DROP TABLE Recomendacion;
 DROP TABLE Categoria;
 DROP TABLE UserProfile;
 
@@ -198,7 +200,19 @@ CREATE INDEX LineaPedidoIndexByIdLineaPedido ON LineaPedido (idLineaPedido);
 
 
 
+-- ------------------------------ Recomendacion ----------------------------------
 
+CREATE TABLE Recomendacion (
+    idRecomendacion BIGINT NOT NULL AUTO_INCREMENT,
+    idRopa1 BIGINT NOT NULL,
+    idRopa2 BIGINT NOT NULL,
+    numVeces INT NOT NULL, 
+   
+    CONSTRAINT idRopa5FK FOREIGN KEY (idRopa1) REFERENCES Ropa(idRopa),
+    CONSTRAINT idRopa6FK FOREIGN KEY (idRopa2) REFERENCES Ropa(idRopa),
+    CONSTRAINT Recomendacion_PK PRIMARY KEY (idRecomendacion))
+    ENGINE = InnoDB;
+CREATE INDEX RecomendacionIndexByIdRecomendacion ON Recomendacion (idRecomendacion);
 
 
 -- ------------------------------ Novedad ----------------------------------
@@ -227,15 +241,7 @@ CREATE TABLE PuntosExtra (
 CREATE INDEX PuntosExtraIndexByIdPuntosExtra ON PuntosExtra (idPuntosExtra);
 
 
--- ------------------------------ Recomendacion ----------------------------------
 
-CREATE TABLE Recomendacion (
-    idRecomendacion BIGINT NOT NULL AUTO_INCREMENT,
-    numVeces INT NOT NULL, 
-   
-    CONSTRAINT Recomendacion_PK PRIMARY KEY (idRecomendacion))
-    ENGINE = InnoDB;
-CREATE INDEX RecomendacionIndexByIdRecomendacion ON Recomendacion (idRecomendacion);
 
 
 

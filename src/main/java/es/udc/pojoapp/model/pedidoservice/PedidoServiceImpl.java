@@ -8,7 +8,12 @@ import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
 import es.udc.pojoapp.model.lineapedido.LineaPedido;
 import es.udc.pojoapp.model.pedido.Pedido;
 import es.udc.pojoapp.model.pedido.PedidoDao;
+import es.udc.pojoapp.model.recomendacion.Recomendacion;
+import es.udc.pojoapp.model.recomendacion.RecomendacionDao;
+import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,11 +29,17 @@ public class PedidoServiceImpl implements PedidoService {
   
   @Autowired
     private PedidoDao pedidoDao;
+   @Autowired
+    private RecomendacionDao recomendacionDao;
   
   public void registrarPedido (Pedido pedido) {
     
     pedidoDao.anadirPedido(pedido);
   
+  }
+  
+  public void aunmentarnumVeces (Recomendacion recomendacion) {
+  recomendacion.setNumVeces(recomendacion.getNumVeces()+1);
   }
   
    @Transactional
@@ -56,11 +67,56 @@ public class PedidoServiceImpl implements PedidoService {
     public void actualizarEstado (long idPedido, String estado) throws InstanceNotFoundException {
       Pedido ped = pedidoDao.find(idPedido);
       ped.setEstado(estado);
-
+    }
     
+    
+    
+    
+    public List<Recomendacion> listaRecomendaciones ()  {
+    
+         return recomendacionDao.listaTodasRecomendaciones();
+    
+    }
+    
+    public long findIdRopa1 (long idRopa) {
+
+      List<Recomendacion> lista = listaRecomendaciones();
+      for (int i=0; i<lista.size();i++) {
+        if (lista.get(i).getIdRopa1() == idRopa){
+          return lista.get(i).getIdRopa1();
+        }
+        
+     
+    }
+    return 0;  
     }
      
      
+    public long findIdRopa2 (long idRopa) {
+      
+      List<Recomendacion> lista = listaRecomendaciones();
+      for (int i=0; i<lista.size();i++) {   
+        if (lista.get(i).getIdRopa2() == idRopa){
+          return lista.get(i).getIdRopa2();
+        }     
+    }
+    return 0;  
+    }  
+    
+    
+    public void actualizarNumVeces (long id1, long id2) throws InstanceNotFoundException {
+      
+      Recomendacion re = recomendacionDao.findByIdsRopa(id1, id2);
+      re.setNumVeces(re.getNumVeces()+1);
+    }
+    
+    
+    public void insertarPedidoService (long id1, long id2) {
+    Recomendacion re = new Recomendacion (id1,id2,1);
+      recomendacionDao.insertarRecomendacion(re);
+    }
+    
 
-   
+
+    
 }

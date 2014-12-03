@@ -85,7 +85,7 @@ public class Comentario {
         this.usuario = usuario;
     }
 
-    @ManyToOne(optional=false, fetch=FetchType.EAGER)
+    @ManyToOne(optional=false, fetch=FetchType.LAZY)
     @JoinColumn(name="idRopa")
     public Ropa getRopa() {
         return ropa;

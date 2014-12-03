@@ -83,7 +83,7 @@ sequenceName = "PedidoSeq")
 
     
     
-    @ManyToOne(optional=false, fetch=FetchType.EAGER)
+    @ManyToOne(optional=false, fetch=FetchType.LAZY)
     @JoinColumn(name="usrId")
     public UserProfile getUsuario() {
         return usuario;
@@ -93,7 +93,7 @@ sequenceName = "PedidoSeq")
         this.usuario = usuario;
     }
     
-    @OneToMany(mappedBy = "pedido",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "pedido",fetch = FetchType.LAZY)
     @Fetch(value = FetchMode.SUBSELECT) //añadido para poder tener varios fetch 
     public List<LineaPedido> getLineaPedidos() {
         return lineaPedidos;

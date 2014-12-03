@@ -99,9 +99,9 @@ public class RegistrarRopa {
           {
            return;
           }      
-      File copied = new File("/Users/Emilio/Dropbox/Facultad/PFC/pojo-app/img/" + file.getFileName());
-
-      file.write(copied);
+    //  File copied = new File("/Users/Emilio/Dropbox/Facultad/PFC/pojo-app/img/" + file.getFileName());
+//
+      //file.write(copied);
 
       Ropa ropa = ropaService.registrarRopa(nombre, precio, color, marca, 
                   descripcion, idCategoria);   

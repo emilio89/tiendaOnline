@@ -66,7 +66,7 @@ public class LineaPedido {
     }
     
     
-  @ManyToOne(optional=false, fetch=FetchType.EAGER)
+  @ManyToOne(optional=false, fetch=FetchType.LAZY)
   @JoinColumn(name="idPedido")
   public Pedido getPedido() {
     return pedido;

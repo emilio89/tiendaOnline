@@ -3,7 +3,7 @@
 -- in the "pojo" database.
 -------------------------------------------------------------------------------
 
-INSERT INTO UserProfile VALUES(7,'emilio2','789','Emilio','Dominguez','emilio89@gmail.com' ,'9999999s',635882115,'23/02/2999','Normal',5);
+INSERT INTO UserProfile VALUES(7,'emilio','ZRvgGhQvRAWJ6','Emilio','Dominguez','emilio89@gmail.com' ,'9999999s',635882115,'23/02/2999','Normal',5);
 
 INSERT INTO Categoria VALUES (1,'Ropa Hombre', 0);
 INSERT INTO Categoria VALUES (2,'Ropa Mujer', 0);
@@ -30,11 +30,20 @@ INSERT INTO Comentario VALUES (1, 'Comentario sobre a camiseta do depor con id-1
 INSERT INTO Comentario VALUES (2, 'Comentario sobre as medias do primark con id-3', 7, 3);
 INSERT INTO Comentario VALUES (3, 'Comentarioooooooooo sobre o tenis do nike con id-4', 7, 4);
 
+INSERT INTO Pedido VALUES ('1', '2014-09-20', '203', 'pendiente', '7');
+
+INSERT INTO LineaPedido VALUES ('1', '51', '1', '1', '3', '3');
+INSERT INTO LineaPedido VALUES ('2', '51', '1', '1', '3', '3');
+
 
 -- SI TENGO BLOB EN CREATETABLES NO PUEDO HACER ESTO.
--- INSERT INTO Adjunto VALUES (1,'/img/New_Balance1.png',4);
--- INSERT INTO Adjunto VALUES (2,'../../../img/New_Balance2.png',4);
--- INSERT INTO Adjunto VALUES (3,'/../../img/New_Balance3.png',4);
+INSERT INTO Adjunto VALUES (1,'/img/New_Balance1.png',4);
+INSERT INTO Adjunto VALUES (2,'../../../img/New_Balance2.png',4);
+INSERT INTO Adjunto VALUES (3,'/../../img/New_Balance3.png',4);
+
+
+INSERT INTO Recomendacion VALUES (1,1,2,1);
+INSERT INTO Recomendacion VALUES (2,1,3,2);
 
 
 

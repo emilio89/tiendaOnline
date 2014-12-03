@@ -7,6 +7,8 @@ package es.udc.pojoapp.web.pages.ropa;
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
 import es.udc.pojoapp.model.comentario.Comentario;
 import es.udc.pojoapp.model.comentarioservice.ComentarioService;
+import es.udc.pojoapp.model.pedidoservice.PedidoService;
+import es.udc.pojoapp.model.recomendacion.Recomendacion;
 import es.udc.pojoapp.model.ropa.Ropa;
 import es.udc.pojoapp.model.ropaservice.RopaService;
 import es.udc.pojoapp.model.stocktalla.StockTalla;
@@ -43,7 +45,8 @@ public class VerRopa {
     
     @Property
     Comentario comentario;
-    
+    @Property
+    Recomendacion recomendacion;
     @Property
     StockTalla stockTalla;
     
@@ -74,6 +77,8 @@ public class VerRopa {
     private UserService userService;
     
     
+    @Inject
+    private PedidoService pedidoService;
     
     @Property
     private String coment;
@@ -181,6 +186,12 @@ public class VerRopa {
 
     long idrop = ropa.getIdRopa();
     return comentarioService.listaComentario(idrop);
+    
+  }
+  
+    public List<Recomendacion> getListaRecomendaciones() throws InstanceNotFoundException {
+
+    return pedidoService.listaRecomendaciones();
     
   }
     

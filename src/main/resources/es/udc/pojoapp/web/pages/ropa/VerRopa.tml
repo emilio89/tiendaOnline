@@ -25,6 +25,10 @@
        </p:ropaCell>         
      </t:grid>
         
+        <t:grid source="listarecomendaciones" row="recomendacion">
+          
+        </t:grid>
+        
         <h2> Quieres añadir algun comentario?? </h2>
         
          <form t:type="Form" t:id="comentarioForm">

@@ -53,7 +53,7 @@
             <tbody>
                <tr t:type="Loop" t:source="listaAdjunto" t:value="Adjunto">
                
-            <td><img src="${adjunto.nombreAdjunto}" /></td>
+            <td><img src="${direccion}${adjunto.nombreAdjunto}" /></td>
 
                    
                 </tr>
@@ -62,6 +62,19 @@
      </div>
 
                 
+      <img src="Users/Emilio/Dropbox/Facultad/PFC/pojo-app/img/New_Balance1.png"
+           alt="imagen" />
+      
+     <!-- <img src="${context:Users/Emilio/Dropbox/Facultad/PFC/pojo-app/img/New_Balance1.png}" alt="Banner"/>
+           
+      
+      <img src="${context:img/New_Balance1.png}" alt="Banner"/>
+
+    <img src="${context:img/New_Balance1.png}"/>
+        <img src="${context:img/New_Balance2.png}"/>
+    <img src="${context:img/New_Balance3.png}"/>
+
+       -->
 
 </body>   
    

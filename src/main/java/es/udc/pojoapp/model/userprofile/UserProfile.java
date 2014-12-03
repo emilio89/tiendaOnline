@@ -166,7 +166,7 @@ public class UserProfile {
                                 + fechaNacimiento +"]";
 	}
         
-  @OneToMany(mappedBy = "usuario",fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "usuario",fetch = FetchType.LAZY)
     public List<Comentario> getComentarios() {
         return comentarios;
     }

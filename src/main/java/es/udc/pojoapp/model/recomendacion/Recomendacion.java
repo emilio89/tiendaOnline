@@ -19,15 +19,15 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Recomendacion {
     private long idRecomendacion;
-    private Ropa ropa1;
-    private Ropa ropa2;
+    private long idRopa1;
+    private long idRopa2;
     private int numVeces;
 
     public Recomendacion(){};
     
-    public Recomendacion(Ropa ropa1, Ropa ropa2, int numVeces) {
-        this.ropa1 = ropa1;
-        this.ropa2 = ropa2;
+    public Recomendacion(long idRopa1, long idRopa2, int numVeces) {
+        this.idRopa1 = idRopa1;
+        this.idRopa2 = idRopa2;
         this.numVeces = numVeces;
     }
     @Column(name = "idRecomendacion")
@@ -45,23 +45,22 @@ public class Recomendacion {
         this.idRecomendacion = idRecomendacion;
     }
 
-  @OneToOne
-    public Ropa getRopa1() {
-        return ropa1;
-    }
+  public long getIdRopa1() {
+    return idRopa1;
+  }
 
-    public void setRopa1(Ropa ropa1) {
-        this.ropa1 = ropa1;
-    }
+  public void setIdRopa1(long idRopa1) {
+    this.idRopa1 = idRopa1;
+  }
 
-  @OneToOne
-    public Ropa getRopa2() {
-        return ropa2;
-    }
+  public long getIdRopa2() {
+    return idRopa2;
+  }
 
-    public void setRopa2(Ropa ropa2) {
-        this.ropa2 = ropa2;
-    }
+  public void setIdRopa2(long idRopa2) {
+    this.idRopa2 = idRopa2;
+  }
+
 
     public int getNumVeces() {
         return numVeces;

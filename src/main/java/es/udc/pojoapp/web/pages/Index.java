@@ -6,9 +6,11 @@ import es.udc.pojoapp.model.ropa.Ropa;
 import es.udc.pojoapp.model.ropaservice.RopaService;
 import es.udc.pojoapp.web.util.Carrito;
 import java.util.List;
+import org.apache.tapestry5.Asset;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.AssetSource;
 import org.apache.tapestry5.upload.services.UploadedFile;
 
 public class Index {
@@ -40,12 +42,25 @@ public class Index {
      @SessionState(create=false)
      private Carrito carrito = new Carrito ();
      
+     
      private boolean siHayCarrito=false;
+     
+     @Inject
+private AssetSource assetSource;
+
+
+     
+     public Asset getSignImage() {
+    final String path = "Users/Emilio/Dropbox/Facultad/PFC/pojo-app/ ";
+    return assetSource.getContextAsset(path, null);
+}
     
     public List<Ropa> getListaRopa() {
     return ropaService.listaRopa();
   }
 
+    
+  
     public List<Adjunto> getListaAdjunto() {
       return adjuntoService.listaAdjuntos();
     }
