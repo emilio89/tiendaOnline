@@ -20,7 +20,7 @@
     	<param-value>false</param-value>
     </context-param>
 
-<!-- Uncomment to enable open session in view filter  
+<!-- Uncomment to enable open session in view filter  -->
     <filter>
     	<filter-name>openSessionInView</filter-name>
     	<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
@@ -29,17 +29,17 @@
       		<param-value>sessionFactory</param-value>
     	</init-param>
   	</filter>
--->
+
     <filter>
     	<filter-name>app</filter-name>
     	<filter-class>org.apache.tapestry5.spring.TapestrySpringFilter</filter-class>
     </filter>
     
-<!-- Uncomment to enable open session in view filter  -->
+<!-- Uncomment to enable open session in view filter 
     <filter-mapping>
     	<filter-name>openSessionInView</filter-name>
     	<url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping> -->
     
 	<filter-mapping>
 		<filter-name>app</filter-name>
