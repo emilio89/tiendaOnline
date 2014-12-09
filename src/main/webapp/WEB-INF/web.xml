@@ -35,11 +35,11 @@
     	<filter-class>org.apache.tapestry5.spring.TapestrySpringFilter</filter-class>
     </filter>
     
-<!-- Uncomment to enable open session in view filter 
+<!-- Uncomment to enable open session in view filter -->
     <filter-mapping>
     	<filter-name>openSessionInView</filter-name>
     	<url-pattern>/*</url-pattern>
-    </filter-mapping> -->
+    </filter-mapping> 
     
 	<filter-mapping>
 		<filter-name>app</filter-name>
