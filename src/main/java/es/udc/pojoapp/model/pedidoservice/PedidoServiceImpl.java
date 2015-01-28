@@ -103,6 +103,13 @@ public class PedidoServiceImpl implements PedidoService {
     return 0;  
     }  
     
+    public List<Long> ids1 (long idRopa2) {
+     return recomendacionDao.listadeIds1(idRopa2);
+    }
+    
+    public List<Long> ids2 (long idRopa1) {
+      return recomendacionDao.listadeIds2(idRopa1);
+    }
     
     public void actualizarNumVeces (long id1, long id2) throws InstanceNotFoundException {
       

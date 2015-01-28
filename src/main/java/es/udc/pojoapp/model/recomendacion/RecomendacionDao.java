@@ -27,11 +27,11 @@ public interface RecomendacionDao extends GenericDao<Recomendacion, Long> {
     
     public Recomendacion findByIdsRopa (long idRopa1, long idRopa2) throws InstanceNotFoundException;
     
-     public long findIdRopa1(long idRopa1);
-    public long findIdRopa2(long idRopa2);
-    
+
     
      public List<Recomendacion> listaTodasRecomendaciones();
      
      public void insertarRecomendacion (Recomendacion recomendacion);
+     public List<Long> listadeIds2 (long idRopa1);
+     public List<Long> listadeIds1 (long idRopa2);
 }

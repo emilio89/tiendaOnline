@@ -24,8 +24,6 @@ public class Pedido {
     private String estado;  
     private List<LineaPedido> lineaPedidos = new ArrayList <LineaPedido>();
 
-    
-    
     public Pedido(){};
       
 

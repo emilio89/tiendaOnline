@@ -29,4 +29,6 @@ public interface PedidoService {
   public void insertarPedidoService (long id1, long id2);
   
    public List<Recomendacion> listaRecomendaciones () ;
+   public List<Long> ids1 (long idRopa2);
+           public List<Long> ids2 (long idRopa1); 
 }

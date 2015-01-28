@@ -43,7 +43,6 @@ INSERT INTO Adjunto VALUES (3,'/../../img/New_Balance3.png',4);
 
 
 INSERT INTO Recomendacion VALUES (1,1,2,1);
-INSERT INTO Recomendacion VALUES (2,1,3,2);
 
 
 

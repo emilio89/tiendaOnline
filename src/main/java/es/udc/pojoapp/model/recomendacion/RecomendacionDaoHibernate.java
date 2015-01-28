@@ -51,28 +51,52 @@ public class RecomendacionDaoHibernate extends
         
             
             }
+          
+           public List<Recomendacion> findidRopa1(long idRopa1) throws InstanceNotFoundException {
+             List<Recomendacion> recomendacion = (List<Recomendacion>)getSession().createQuery(
+    			"SELECT u FROM Recomendacion u WHERE (u.idRopa1 = :idRopa1) ")
+    			.setParameter("idRopa1", idRopa1).list();
+    	if (recomendacion == null) {
+   			throw new InstanceNotFoundException(idRopa1, Recomendacion.class.getName());
+    	} else {
+    		return recomendacion;
+    	}  
         
-        public long findIdRopa1 (long idRopa1) {
-       /* long devolver = (long)0;
-        System.out.println("Entra en findIDropa 1 ++" + devolver);
-        devolver = (long) getSession().createQuery(
-    			"SELECT u.ropa1.idRopa FROM Recomendacion u WHERE u.ropa1.idRopa = :idRopa1")
-    			.setParameter("idRopa1", idRopa1)
-    			.uniqueResult(); */
-        return 0; 
-        }
+            
+            }
+          
+           public List<Recomendacion> findidRopa2(long idRopa2) throws InstanceNotFoundException {
+             List<Recomendacion> recomendacion = (List<Recomendacion>)getSession().createQuery(
+    			"SELECT u FROM Recomendacion u WHERE (u.idRopa2 = :idRopa2) ")
+    			.setParameter("idRopa1", idRopa2);
+    	if (recomendacion == null) {
+   			throw new InstanceNotFoundException(idRopa2, Recomendacion.class.getName());
+    	} else {
+    		return recomendacion;
+    	}  
+        
+            
+            }
+ 
 
-    public long findIdRopa2 (long idRopa2) {
-  /*    long devolver = (long)0;
-    
-             devolver = (long) getSession().createQuery(
-    			"SELECT u.ropa2.idRopa FROM Recomendacion u WHERE u.ropa2.idRopa2 = :idRopa2")
-    			.setParameter("idRopa2", idRopa2)
-    			.uniqueResult();*/
-        return 0;
+    public List<Long> listadeIds2 (long idRopa1) {
+      List<Long> devolver;
+      
+           devolver = (List<Long>)getSession().createQuery(
+    			"SELECT u.idRopa2 FROM Recomendacion u WHERE (u.idRopa1 = :idRopa1)")
+    			.setParameter("idRopa1", idRopa1).list();
+           return devolver;
+        
     }
     
-    
+        public List<Long> listadeIds1 (long idRopa2) {
+      List<Long> devolver;
+           devolver = (List<Long>)getSession().createQuery(
+    			"SELECT u.idRopa1 FROM Recomendacion u WHERE (u.idRopa2 = :idRopa2)")
+    			.setParameter("idRopa2", idRopa2).list();
+           return devolver;
+        
+    }
     // Lista todas las Recomendaciones con todas sus propiedades.  
        public List<Recomendacion> listaTodasRecomendaciones() {
     Query query = getSession().createQuery("SELECT u FROM Recomendacion u");

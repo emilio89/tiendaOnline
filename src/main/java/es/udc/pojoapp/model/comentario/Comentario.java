@@ -27,9 +27,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Comentario {
     private long idComentario;
-    private String textoComentario;
-
-    
+    private String textoComentario;  
     private UserProfile usuario;
     private Ropa ropa;
 
@@ -70,10 +68,6 @@ public class Comentario {
         this.textoComentario = textoComentario;
     }
 
-    /**
-     *
-     * @return
-     */
  
     @OneToOne
    @JoinColumn(name="usrId")

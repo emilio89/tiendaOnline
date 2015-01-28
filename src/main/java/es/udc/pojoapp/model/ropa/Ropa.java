@@ -126,7 +126,7 @@ public Ropa() {};
 
 
 
-      @OneToMany(mappedBy = "ropa",fetch = FetchType.EAGER)
+      @OneToMany(mappedBy = "ropa",fetch = FetchType.LAZY)
       public List<Comentario> getComentarios() {
           return comentarios;
       }
@@ -135,7 +135,7 @@ public Ropa() {};
           this.comentarios = comentarios;
       }
 
-      @OneToMany(mappedBy = "ropa",fetch = FetchType.EAGER)
+      @OneToMany(mappedBy = "ropa",fetch = FetchType.LAZY)
       @Fetch(value = FetchMode.SUBSELECT) //añadido para poder tener varios fetch 
       public List<StockTalla> getStocktalla() {
         return stocktalla;
