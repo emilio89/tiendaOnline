@@ -13,10 +13,10 @@ INSERT INTO Categoria VALUES (5,'Calzado Niño', 3);
 
 
 
-INSERT INTO Ropa VALUES (1,'Camiseta',14, 'Joma' ,'Azul e branca' ,'Camiseta do depor',1);
-INSERT INTO Ropa VALUES (2,'Pantalon',54, 'Joma' ,'Azul' ,'Pantalon do depor',1);
-INSERT INTO Ropa VALUES (3,'Medias',51, 'Primark' ,'Marrons' ,'Medias normales de todo',2);
-INSERT INTO Ropa VALUES (4,'Tenis',98, 'Nike' ,'Negros e naranxas' ,'Tenis para neno último modelo',5);
+INSERT INTO Ropa VALUES (1,'Camiseta',14, 'Joma' ,'Azul e branca' ,'Camiseta do depor',1,0);
+INSERT INTO Ropa VALUES (2,'Pantalon',54, 'Joma' ,'Azul' ,'Pantalon do depor',1,0);
+INSERT INTO Ropa VALUES (3,'Medias',51, 'Primark' ,'Marrons' ,'Medias normales de todo',2,5);
+INSERT INTO Ropa VALUES (4,'Tenis',98, 'Nike' ,'Negros e naranxas' ,'Tenis para neno último modelo',5,10);
 
 INSERT INTO StockTalla VALUES (1, 'L',50,1);
 INSERT INTO StockTalla VALUES (4, 'XXL',50,1);

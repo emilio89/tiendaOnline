@@ -23,9 +23,7 @@ public class VerPedidosTramitado {
   
   @Inject
   private PedidoService pedidoService;
-  
-  
-  
+ 
   
   public List<Pedido> getPedidosTramitados () {
     return pedidoService.listaPedidos();

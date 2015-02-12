@@ -77,6 +77,7 @@ CREATE TABLE Ropa (
     color VARCHAR(30) NOT NULL,
     descripcion VARCHAR(255) NOT NULL,  
     idCategoria BIGINT NOT NULL,
+    numPuntos INT NULL,
           
     
     CONSTRAINT Ropa_PK PRIMARY KEY (idRopa),

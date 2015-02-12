@@ -16,7 +16,11 @@ import es.udc.pojoapp.web.util.Carrito;
 import es.udc.pojoapp.web.util.UserSession;
 import java.util.Date;
 import java.util.List;
+import org.apache.tapestry5.Block;
+import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.InjectPage;
+import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.Form;
@@ -58,6 +62,31 @@ public class VerPedido {
     
   @Inject
   private UserService userService;
+      
+  
+  
+  @Property
+    @Persist(PersistenceConstants.FLASH)
+    // We use a String, not a Boolean, in the radio group value so that we can represent null. Boolean can't represent
+    // null because Tapestry will coerce it to Boolean.FALSE. See https://issues.apache.org/jira/browse/TAPESTRY-1928 .
+    private String valueForMyBoolean;
+ 
+    @Property
+    private Boolean myBoolean;
+  
+ @Inject
+ Block t;
+ @Inject
+ Block f;
+ @Inject
+ Block n;
+ 
+
+@InjectPage
+private DatosPedido datosPedido;
+
+
+
 
   public boolean isHay() {
     
@@ -109,6 +138,7 @@ public class VerPedido {
    return Index.class;
    
    }
+  
    
    Object onSuccessFromtramitarPedidoForm() throws InstanceNotFoundException {
 
@@ -123,11 +153,54 @@ public class VerPedido {
       pedidoService.registrarPedido(pedido);    
       lineaPedidoService.registrarLineaPedido(carrito.getProductos(),pedido);
       carrito.vaciarCarrito();
-     return VerPedidosTramitado.class;
-    
+     //return VerPedidosTramitado.class;
+      System.out.println(pedido.getIdPedido() + "ID PEDIDOOOOO");
+        datosPedido.setIdPedido(pedido.getIdPedido());
+         return datosPedido;
+
       }
    
-   
+	   void setupRender() {
+
+        // First time in, valueForMyBoolean will be null.
+
+        if (valueForMyBoolean == null) {
+            valueForMyBoolean = "T";
+        }
+
+        // Set myBoolean based on valueForMyBoolean.
+
+        if (valueForMyBoolean.equals("T")) {
+            myBoolean = Boolean.TRUE;
+        }
+        else if (valueForMyBoolean.equals("F")) {
+            myBoolean = Boolean.FALSE;
+        }
+        else if (valueForMyBoolean.equals("N")) {
+            myBoolean = null;
+        }
+        else {
+            throw new IllegalStateException(valueForMyBoolean);
+        }
+    }
+           
+      public Block getCase() {
+
+        // If myBoolean was an int or enum we could use switch/case logic instead of if/else -
+        // see http://tapestry.apache.org/switching-cases.html
+
+        if (myBoolean == null) {
+            return n;
+        }
+        else if (myBoolean == Boolean.TRUE) {
+            return t;
+        }
+        else {
+            return f;
+        }
+    }
+      
+      
   
    
 

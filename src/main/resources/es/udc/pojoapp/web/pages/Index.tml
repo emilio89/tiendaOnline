@@ -53,7 +53,7 @@
             <tbody>
                <tr t:type="Loop" t:source="listaAdjunto" t:value="Adjunto">
                
-            <td><img src="${direccion}${adjunto.nombreAdjunto}" /></td>
+            <td> <img src="${direccion}${adjunto.nombreAdjunto}" /></td>
 
                    
                 </tr>

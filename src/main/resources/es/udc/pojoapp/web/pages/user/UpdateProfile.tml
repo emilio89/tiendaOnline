@@ -61,10 +61,15 @@
 				       size="16" maxlength="30" />
 	        </span>
 	   </div>
+           <div class="field">    
+             <strong>${message:numeroPuntos}: </strong>${numeroPuntos}	       
+	   </div>
+           
 	    <div class="button">
 	        <input type="submit" value="${message:submit}"/>        
 	    </div>
 	    
 	</form>
+        
 
 </html>

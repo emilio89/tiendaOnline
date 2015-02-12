@@ -37,9 +37,8 @@ public class UpdateProfile {
     
     @Property
     private String tipoUsuario;
-    
-    @Property
-    private int numeroPuntos;
+ 
+    int numeroPuntos;
 
     @SessionState(create=false)
     private UserSession userSession;
@@ -59,6 +58,7 @@ public class UpdateProfile {
         dni = userProfile.getDni();
         telefono = userProfile.getTelefono();
         fechaNacimiento = userProfile.getFechaNacimiento();
+       
 
     }
 
@@ -72,5 +72,17 @@ public class UpdateProfile {
         return Index.class;
 
     }
+
+  public int getNumeroPuntos() throws InstanceNotFoundException {
+     UserProfile  userProfile = userService.findUserProfile(userSession
+                .getUserProfileId());
+    return userProfile.getNumeroPuntos();
+  }
+
+  public void setNumeroPuntos(int numeroPuntos) throws InstanceNotFoundException {
+     UserProfile  userProfile = userService.findUserProfile(userSession
+                .getUserProfileId());
+    this.numeroPuntos = userProfile.getNumeroPuntos();
+  }
 
 }
