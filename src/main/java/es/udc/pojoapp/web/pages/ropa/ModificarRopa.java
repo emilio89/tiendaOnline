@@ -37,7 +37,8 @@ public class ModificarRopa {
   
   @Property 
   private String descripcion;
- 
+  @Property 
+  private int numPuntos;
   
   
    @SessionState(create=false)
@@ -59,11 +60,12 @@ public class ModificarRopa {
     color = ropa.getColor();
     marca = ropa.getMarca();
     descripcion = ropa.getDescripcion();
+    numPuntos = ropa.getNumPuntos();
     }
    
    
     Object onSuccess() throws InstanceNotFoundException {
-      ropaService.actualizarRopa(idRopa, nombre, precio, color, marca, descripcion);
+      ropaService.actualizarRopa(idRopa, nombre, precio, color, marca, descripcion,numPuntos);
         return Index.class;
 
     }

@@ -9,14 +9,9 @@
 <form t:type="Form" t:id="actualizarRopaForm">
 	   <t:errors/>
 
-              <div class="field">        
-	        <t:label for="idRopa"/>
-	        <span class="entry">    
-	            <input t:id="idRopa" t:type="TextField"
-				       t:validate="required" 
-				       size="16" maxlength="30" />
-	        </span>
-	   </div>
+            
+           
+           <h3> El id de la ropa es: ${idRopa} </h3>
            
 	   <div class="field">        
 	        <t:label for="nombre"/>
@@ -58,6 +53,14 @@
 	        <t:label for="descripcion"/>
 	        <span class="entry">    
 	            <input t:id="descripcion" t:type="TextField"
+				       t:validate="required" 
+				       size="16" maxlength="30" />
+	        </span>
+	   </div>
+            <div class="field">        
+	        <t:label for="numPuntos"/>
+	        <span class="entry">    
+	            <input t:id="numPuntos" t:type="TextField"
 				       t:validate="required" 
 				       size="16" maxlength="30" />
 	        </span>

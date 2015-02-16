@@ -67,7 +67,7 @@ public class RopaServiceImpl implements RopaService {
     }
     
   public void actualizarRopa(long idRopa, String nombre, int precio,
-            String color, String marca, String descripcion)
+            String color, String marca, String descripcion, int numPuntos)
                throws InstanceNotFoundException 
   {
         
@@ -77,6 +77,7 @@ public class RopaServiceImpl implements RopaService {
     ropa.setColor(color);
     ropa.setMarca(marca);
     ropa.setDescripcion(descripcion);
+    ropa.setNumPuntos(numPuntos);
  
    }
  

@@ -154,7 +154,6 @@ private DatosPedido datosPedido;
       lineaPedidoService.registrarLineaPedido(carrito.getProductos(),pedido);
       carrito.vaciarCarrito();
      //return VerPedidosTramitado.class;
-      System.out.println(pedido.getIdPedido() + "ID PEDIDOOOOO");
         datosPedido.setIdPedido(pedido.getIdPedido());
          return datosPedido;
 

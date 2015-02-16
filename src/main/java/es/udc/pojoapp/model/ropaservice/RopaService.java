@@ -24,7 +24,7 @@ public interface RopaService {
             throws InstanceNotFoundException;
         
         public void actualizarRopa (long idRopa, String nombre, int precio,
-            String color, String marca, String descripcion) 
+            String color, String marca, String descripcion, int numPuntos) 
                 throws InstanceNotFoundException;
         
         

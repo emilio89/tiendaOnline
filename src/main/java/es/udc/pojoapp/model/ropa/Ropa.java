@@ -24,6 +24,7 @@ public class Ropa {
   private String color;
   private String marca;
   private String descripcion;
+  private int numPuntos;
   
   
   private long idCategoria;
@@ -122,6 +123,14 @@ public Ropa() {};
 
     public void setDescripcion(String descripcion) {
       this.descripcion = descripcion;
+    }
+
+    public int getNumPuntos() {
+        return numPuntos;
+    }
+
+    public void setNumPuntos(int numPuntos) {
+        this.numPuntos = numPuntos;
     }
 
 
