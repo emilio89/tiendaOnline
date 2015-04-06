@@ -1,6 +1,8 @@
 package es.udc.pojoapp.web.pages.ropa;
 
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import es.udc.pojoapp.model.adjunto.Adjunto;
+import es.udc.pojoapp.model.adjuntoservice.AdjuntoService;
 import es.udc.pojoapp.model.categoria.Categoria;
 import es.udc.pojoapp.model.categoriaservice.CategoriaService;
 import es.udc.pojoapp.model.descuento.Descuento;
@@ -12,6 +14,9 @@ import es.udc.pojoapp.web.pages.Index;
 import es.udc.pojoapp.web.services.AuthenticationPolicy;
 import es.udc.pojoapp.web.services.AuthenticationPolicyType;
 import java.io.File;
+import java.io.FileInputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
 import org.apache.tapestry5.SelectModel;
 
@@ -47,13 +52,13 @@ public class RegistrarRopa {
     @Property
     private String nombreAdjunto;
     
-    @Property    
-    private UploadedFile file;
+
     
     @Property
     private long idCategoria;
     
-    
+     @Property
+    private UploadedFile file;
     
     @Property 
     private int stock;
@@ -61,7 +66,10 @@ public class RegistrarRopa {
     @Property
     private String talla;
         
-        
+   /* @Inject
+    @Path ("context:/home/emilio/Dropbox/Facultad/PFC/pojo-app/img/Pantalon_Depor1.png")
+    private Asset imagen1;  
+    */
     @Inject
     private RopaService ropaService;
 
@@ -75,7 +83,8 @@ public class RegistrarRopa {
     @Property
     Categoria categoria;
 
-  
+   @Inject
+    private AdjuntoService adjuntoService;
     @Inject
     private CategoriaService categoriaService;
     
@@ -93,21 +102,43 @@ public class RegistrarRopa {
   }
        
     
-    void onValidateFromregistrarRopaForm() throws InstanceNotFoundException {
+    void onValidateFromregistrarRopaForm() throws InstanceNotFoundException, SQLException {
             
       if (!registrarRopaForm.isValid()) 
           {
            return;
-          }      
+          }
     //  File copied = new File("/Users/Emilio/Dropbox/Facultad/PFC/pojo-app/img/" + file.getFileName());
 //
       //file.write(copied);
+      
 
-      Ropa ropa = ropaService.registrarRopa(nombre, precio, color, marca, 
+        Ropa ropa = ropaService.registrarRopa(nombre, precio, color, marca, 
                   descripcion, idCategoria);   
+     
+        File file2 = new File("/home/emilio/Dropbox/Facultad/PFC/pojo-app/img/" +  file.getFileName());
+        byte[] imageData = new byte[(int) file2.length()];
+
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file2);
+            fileInputStream.read(imageData);
+            fileInputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Blob blob1 = new javax.sql.rowset.serial.SerialBlob(imageData);
+        blob1.setBytes(1, imageData);
+        Adjunto adjunto = ropaService.registrarAdjunto(file.getFileName(), blob1, ropa);
+
       
       StockTalla stockTalla = stockTallaService.registrarStockTalla(talla, stock, ropa);
-          
+      
+      
+               
+        byte[] bAdjunto = ropaService.verImagen(ropa.getIdRopa());
+ 
+
+   
           
         }
 

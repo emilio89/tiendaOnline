@@ -4,6 +4,7 @@ package es.udc.pojoapp.model.pedido;
 
 import es.udc.pojo.modelutil.dao.GenericDao;
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import es.udc.pojoapp.model.adjunto.Adjunto;
 import es.udc.pojoapp.model.lineapedido.LineaPedido;
 import java.util.List;
 
@@ -26,5 +27,5 @@ public interface PedidoDao extends GenericDao<Pedido, Long>{
       public List<Pedido> listaTodosPedidos ();
       
       public List<Pedido> listaPedidosUsuario (long userProfileId);
-      public List<LineaPedido> listaPedidosLineas (long idPedido) ;
+      public List<LineaPedido> listaPedidosLineas (long idPedido);
 }

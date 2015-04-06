@@ -71,8 +71,8 @@ private LineaPedidoService lineaPedidoService;
     
   }
 
-  public int getPrecioTotal() {
-    int aux=0;
+  public long getPrecioTotal() {
+    long aux=0;
     List<LineaPedido> list = lineaPedidoService.listarLineasPorIdPedido(this.idPedido);
     for(int i=0;i<list.size();i++) {
       aux= aux + (list.get(i).getPrecioUnitario() * list.get(i).getNumeroUnidades() );    

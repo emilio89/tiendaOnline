@@ -109,7 +109,9 @@ CREATE INDEX StockTallaIndexByIdStockTalla ON StockTalla (idStockTalla);
 CREATE TABLE Adjunto (
     idAdjunto BIGINT NOT NULL AUTO_INCREMENT,
     nombreAdjunto VARCHAR(190) COLLATE latin1_bin NOT NULL,
+    imagen LONGBLOB,
     idRopa BIGINT NOT NULL,
+
 
 
     CONSTRAINT idRopa5FG FOREIGN KEY(idRopa) REFERENCES Ropa (idRopa),

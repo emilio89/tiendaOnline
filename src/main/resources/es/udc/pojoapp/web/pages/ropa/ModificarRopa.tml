@@ -8,9 +8,6 @@
 
 <form t:type="Form" t:id="actualizarRopaForm">
 	   <t:errors/>
-
-            
-           
            <h3> El id de la ropa es: ${idRopa} </h3>
            
 	   <div class="field">        

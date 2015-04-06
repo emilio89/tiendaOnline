@@ -28,7 +28,7 @@ public class ModificarRopa {
   private String nombre;
   
   @Property
-  private int precio;
+  private long precio;
   
   @Property 
   private String color;

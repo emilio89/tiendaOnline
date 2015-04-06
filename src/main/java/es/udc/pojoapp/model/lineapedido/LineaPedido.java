@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class LineaPedido {
   
     private long idLineaPedido;
-    private int precioUnitario;
+    private long precioUnitario;
     private int numeroUnidades;
     
     private long idStockTalla;
@@ -26,7 +26,7 @@ public class LineaPedido {
     
     public LineaPedido() {}
 
-    public LineaPedido(Pedido pedido, long idStockTalla, long idRopa,int precioUnitario, int numeroUnidades) {
+    public LineaPedido(Pedido pedido, long idStockTalla, long idRopa,long precioUnitario, int numeroUnidades) {
         this.pedido = pedido;
         this.idStockTalla = idStockTalla;
         this.idRopa = idRopa;
@@ -49,11 +49,11 @@ public class LineaPedido {
         this.idLineaPedido = idLineaPedido;
     }
 
-    public int getPrecioUnitario() {
+    public long getPrecioUnitario() {
         return precioUnitario;
     }
 
-    public void setPrecioUnitario(int precioUnitario) {
+    public void setPrecioUnitario(long precioUnitario) {
         this.precioUnitario = precioUnitario;
     }
 

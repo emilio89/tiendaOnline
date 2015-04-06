@@ -24,7 +24,9 @@
 				       size="16" maxlength="30" />
 	        </span>
 	   </div>
-	   
+           <div class="field">
+	    <input t:type="upload" t:id="file" t:value="file" validate="required"/>
+            </div>
 	   <div class="field">        
 	        <t:label for="marca"/>
 	        <span class="entry">    
@@ -95,9 +97,9 @@
   
   <table class="RegistrarRopa">
 		
-				
+	<tr><th>idCategoria</th><th>nombreCategoria</th><th>idCategoriaPadre</th></tr>
 		<tr t:type="Loop" t:source="listaCategoriaRopa" t:value="categoria">
-                  <tr><th>idCategoria</th><th>nombreCategoria</th><th>idCategoriaPadre</th></tr>
+                  
 
 		    <td>
 		    	<a href="#" t:type="PageLink" t:page="categoria/modificarCategoria"

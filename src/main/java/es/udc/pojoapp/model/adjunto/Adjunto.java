@@ -6,6 +6,7 @@
 package es.udc.pojoapp.model.adjunto;
 
 import es.udc.pojoapp.model.ropa.Ropa;
+import java.sql.Blob;
 import javax.persistence.*;
 
 /**
@@ -18,12 +19,19 @@ public class Adjunto  {
   
     private long idAdjunto;
     private String nombreAdjunto;
+    private Blob imagen;
     private Ropa ropa;
     
 
     public Adjunto(){};
     public Adjunto(String nombreAdjunto) {
         this.nombreAdjunto = nombreAdjunto;
+    }
+
+    public Adjunto(String nombreAdjunto, Blob imagen, Ropa ropa) {
+        this.nombreAdjunto = nombreAdjunto;
+        this.imagen = imagen;
+        this.ropa = ropa;
     }
 
     @Column(name = "idAdjunto")
@@ -59,6 +67,16 @@ public class Adjunto  {
   public void setRopa(Ropa ropa) {
     this.ropa = ropa;
   }
+
+  @Lob
+  @Column (name="imagen")
+    public Blob getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(Blob imagen) {
+        this.imagen = imagen;
+    }
 
     
     

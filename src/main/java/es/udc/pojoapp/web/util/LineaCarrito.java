@@ -14,24 +14,24 @@ import es.udc.pojoapp.model.stocktalla.StockTalla;
 public class LineaCarrito {
   
   private String nombreRopa;
-  private int precio;
+  private long precio;
   private int cantidad = 1;
   private Ropa ropa;
   private long idStockTalla;
   
 
   
-  public LineaCarrito(int precio, Ropa ropa, long idStockTalla) {
+  public LineaCarrito(long precio, Ropa ropa, long idStockTalla) {
     this.precio = precio;
     this.ropa = ropa;
     this.idStockTalla = idStockTalla;
   }
 
-  public int getPrecio() {
+  public long getPrecio() {
     return precio;
   }
 
-  public void setPrecio(int precio) {
+  public void setPrecio(long precio) {
     this.precio = precio;
   }
 

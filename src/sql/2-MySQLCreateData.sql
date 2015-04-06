@@ -37,9 +37,7 @@ INSERT INTO LineaPedido VALUES ('2', '51', '1', '1', '3', '3');
 
 
 -- SI TENGO BLOB EN CREATETABLES NO PUEDO HACER ESTO.
-INSERT INTO Adjunto VALUES (1,'/img/New_Balance1.png',4);
-INSERT INTO Adjunto VALUES (2,'../../../img/New_Balance2.png',4);
-INSERT INTO Adjunto VALUES (3,'/../../img/New_Balance3.png',4);
+
 
 
 INSERT INTO Recomendacion VALUES (1,1,2,1);

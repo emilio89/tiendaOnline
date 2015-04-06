@@ -3,10 +3,14 @@
 package es.udc.pojoapp.model.ropaservice;
 
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import es.udc.pojoapp.model.adjunto.Adjunto;
+import es.udc.pojoapp.model.adjunto.AdjuntoDao;
 import es.udc.pojoapp.model.ropa.Ropa;
 import es.udc.pojoapp.model.ropa.RopaDao;
+import java.sql.Blob;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,12 +21,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service("RopaService")
 @Transactional
 public class RopaServiceImpl implements RopaService {
-    
-    
-  
+
   @Autowired
   private RopaDao ropaDao;      
-  
+  @Autowired
+  private AdjuntoDao adjuntoDao;
     
        
   
@@ -36,7 +39,21 @@ public class RopaServiceImpl implements RopaService {
     ropaDao.anadirRopa(ropa);
     return ropa;
    }
+  
+  public Adjunto registrarAdjunto (String nombre, Blob imagen,Ropa ropa) {
+      Adjunto adjunto = new Adjunto (nombre, imagen, ropa);
+      ropa.addAdjunto(adjunto);
+      adjuntoDao.anadirAdjunto(adjunto);
+      return adjunto;
+  }
        
+  public byte[] verImagen (long idRopa) {
+      byte[] devolver = null;
+              
+              
+              return devolver;
+
+  }
        
   public Ropa registrarRopa (Ropa ropa)
   {
@@ -57,20 +74,36 @@ public class RopaServiceImpl implements RopaService {
   public List<Ropa> listaRopa()
   {   
     return ropaDao.listaRopa();
-    
   }
        
+  
+    @Transactional
+  public List<Ropa> listaRopaConImagen()
+  {   
+    return ropaDao.listaRopa();
+  }
        
    public void borrarRopa(){
 
-     
+    }
+   
+    public Adjunto recuperarAdjunto (Long idRopa) throws InstanceNotFoundException {
+    
+    return adjuntoDao.findByIdRopa(idRopa);
+    }
+    public Blob recuperarImagen (Long idRopa)throws InstanceNotFoundException{
+    
+    return recuperarAdjunto(idRopa).getImagen();
     }
     
-  public void actualizarRopa(long idRopa, String nombre, int precio,
+  
+    
+    
+    
+  public void actualizarRopa(long idRopa, String nombre, long precio,
             String color, String marca, String descripcion, int numPuntos)
                throws InstanceNotFoundException 
-  {
-        
+  {       
     Ropa ropa = ropaDao.find(idRopa);
     ropa.setNombre(nombre);
     ropa.setPrecio(precio);

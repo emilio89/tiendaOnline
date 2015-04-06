@@ -7,7 +7,9 @@
 package es.udc.pojoapp.model.ropaservice;
 
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import es.udc.pojoapp.model.adjunto.Adjunto;
 import es.udc.pojoapp.model.ropa.Ropa;
+import java.sql.Blob;
 import java.util.List;
 
 /**
@@ -23,14 +25,18 @@ public interface RopaService {
         public Ropa findRopa(Long idRopa)
             throws InstanceNotFoundException;
         
-        public void actualizarRopa (long idRopa, String nombre, int precio,
+        public void actualizarRopa (long idRopa, String nombre, long precio,
             String color, String marca, String descripcion, int numPuntos) 
                 throws InstanceNotFoundException;
         
         
         public List<Ropa> listaRopa();
-        
+        public Adjunto recuperarAdjunto (Long idRopa) throws InstanceNotFoundException;
         public void borrarRopa();
-        
-    
+        public Adjunto registrarAdjunto (String nombre, Blob imagen,Ropa ropa);
+          public byte[] verImagen (long idRopa);
+          public Blob recuperarImagen (Long idRopa)throws InstanceNotFoundException;
+          
+            public List<Ropa> listaRopaConImagen();
+
 }

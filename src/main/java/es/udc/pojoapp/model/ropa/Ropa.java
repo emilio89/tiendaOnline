@@ -20,7 +20,7 @@ import org.hibernate.annotations.FetchMode;
 public class Ropa {
   private long idRopa;
   private String nombre;
-  private int precio;
+  private long precio;
   private String color;
   private String marca;
   private String descripcion;
@@ -93,11 +93,11 @@ public Ropa() {};
       this.nombre = nombre;
     }
 
-    public int getPrecio() {
+    public long getPrecio() {
       return precio;
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(long precio) {
       this.precio = precio;
     }
 
@@ -133,8 +133,6 @@ public Ropa() {};
         this.numPuntos = numPuntos;
     }
 
-
-
       @OneToMany(mappedBy = "ropa",fetch = FetchType.LAZY)
       public List<Comentario> getComentarios() {
           return comentarios;
@@ -154,10 +152,6 @@ public Ropa() {};
     this.stocktalla = stocktalla;
   }
       
-
-  
-  
-
      @ManyToMany
       public List<Etiqueta> getEtiquetas() {
           return etiquetas;
@@ -192,7 +186,10 @@ public Ropa() {};
     comentarios.add(coment);
   
   }    
+  public void addAdjunto (Adjunto a ) {
   
+      adjuntos.add(a);
+  }
   public void addStockTalla (StockTalla stock) {
   stocktalla.add(stock);
   

@@ -29,6 +29,12 @@
           
         </t:grid>
         
+     
+        <img src="${imageLink}"/>
+       
+       
+             <a t:type="eventlink" t:event="returnstreamresponse" href="#">Imagen</a> 
+        
         <h2> Quieres añadir algun comentario?? </h2>
         
          <form t:type="Form" t:id="comentarioForm">

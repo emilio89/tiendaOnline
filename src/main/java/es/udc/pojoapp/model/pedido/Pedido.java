@@ -19,7 +19,7 @@ public class Pedido {
   
     private long idPedido;
     private Date fechaPedido;
-    private int precioTotal;    
+    private long precioTotal;    
     private UserProfile usuario;
     private String estado;  
     private List<LineaPedido> lineaPedidos = new ArrayList <LineaPedido>();
@@ -28,7 +28,7 @@ public class Pedido {
       
 
 
-    public Pedido(Date fechaPedido, int precioTotal, UserProfile usuario, String estado) {
+    public Pedido(Date fechaPedido, long precioTotal, UserProfile usuario, String estado) {
       	/**
 		 * NOTE: "idPedido" *must* be left as "null" since its value is
 		 * automatically generated.
@@ -63,11 +63,11 @@ sequenceName = "PedidoSeq")
         this.fechaPedido = fechaPedido;
     }
 
-    public int getPrecioTotal() {
+    public long getPrecioTotal() {
         return precioTotal;
     }
 
-    public void setPrecioTotal(int precioTotal) {
+    public void setPrecioTotal(long precioTotal) {
         this.precioTotal = precioTotal;
     }
 

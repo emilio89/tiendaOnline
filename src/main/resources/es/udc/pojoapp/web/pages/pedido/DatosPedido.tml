@@ -2,8 +2,7 @@
 	t:type="Layout" t:pageTitle="title" 
 	t:menuExplanation="menuExplanation">
   <head>
-	<link rel="StyleSheet" href="${context:/css/styles.css}"
-		  type="text/css" media="all"/>
+
 </head>
   <body>
     

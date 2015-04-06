@@ -49,11 +49,23 @@ public class RopaDaoHibernate extends
 
   }
  
+    public List<Ropa> listaRopaImagen() {
+    
+    Query query = getSession().createQuery("SELECT u FROM Ropa u WHERE ");
+    List<Ropa> lista= query.list();
+    return lista;
+
+  }
   
   public void anadirRopa (Ropa ropa){
      sessionFactory.getCurrentSession().save(ropa);
 
       }
+  
+  
+  
+  
+  
       
  }
 

@@ -5,6 +5,7 @@
 package es.udc.pojoapp.web.pages.ropa;
 
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
+import es.udc.pojoapp.model.adjunto.Adjunto;
 import es.udc.pojoapp.model.comentario.Comentario;
 import es.udc.pojoapp.model.comentarioservice.ComentarioService;
 import es.udc.pojoapp.model.pedidoservice.PedidoService;
@@ -16,18 +17,26 @@ import es.udc.pojoapp.model.stocktallaservice.StockTallaService;
 import es.udc.pojoapp.model.userprofile.UserProfile;
 import es.udc.pojoapp.model.userservice.UserService;
 import es.udc.pojoapp.web.pages.Index;
-import es.udc.pojoapp.web.services.AuthenticationPolicy;
-import es.udc.pojoapp.web.services.AuthenticationPolicyType;
 import es.udc.pojoapp.web.util.Carrito;
 import es.udc.pojoapp.web.util.LineaCarrito;
 import es.udc.pojoapp.web.util.UserSession;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.apache.tapestry5.Link;
 import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.StreamResponse;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
 import org.apache.tapestry5.corelib.components.Form;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.PageRenderLinkSource;
+import org.apache.tapestry5.services.Response;
 import org.apache.tapestry5.services.SelectModelFactory;
 
 
@@ -36,8 +45,8 @@ import org.apache.tapestry5.services.SelectModelFactory;
  * @author Emilio
  */
 public class VerRopa {
-   /* @Property
-    private Adjunto adjunto;*/  
+   @Property
+    private Adjunto adjunto;
     
     long id;
     Ropa ropa;
@@ -89,6 +98,9 @@ public class VerRopa {
     @SessionState(create=false)
     private Carrito carrito= new Carrito();
 
+    private InputStream blob1;
+      // private Blob blob2;
+    
   public Ropa getRopa() {
     return ropa;
   }
@@ -110,10 +122,6 @@ public class VerRopa {
       return ropaService.listaRopa();
     
     }
-
-
-            
-    
     
     public List <Ropa> getRopas() {
     
@@ -158,17 +166,6 @@ public class VerRopa {
     carrito.anadirProducto(lineaCarrito2); 
       
   }
-        
-    /* Object onActionFromAnadir(long idRopa) throws InstanceNotFoundException
-    {
-      
-      Ropa ropa2 = ropaService.findRopa(idRopa);
-      LineaCarrito lineaCarrito = new LineaCarrito 
-              (ropa2.getPrecio(),ropa2, idStockTalla);
-      carrito.anadirProducto(lineaCarrito); 
-      return Index.class;
- 
-    } */
      Object onSuccess () {
      
        return Index.class;
@@ -178,8 +175,7 @@ public class VerRopa {
     void setupRender () {
     
       List<StockTalla> stockTallas = stockTallaService.listaStockTalla(ropa.getIdRopa());
-      stockTallaSelectModel = selectModelFactory.create(stockTallas, "talla");
-    
+      stockTallaSelectModel = selectModelFactory.create(stockTallas, "talla");    
     }
  
   public List<Comentario> getListaComentarios() throws InstanceNotFoundException {
@@ -194,6 +190,64 @@ public class VerRopa {
     return pedidoService.listaRecomendaciones();
     
   }
+
+    public Blob getBlob1() throws InstanceNotFoundException {
+        Blob a = ropaService.recuperarImagen(ropa.getIdRopa());
+        
+        return a;
+    }
+
+     
+     
+       public StreamResponse onReturnStreamResponse() {
+        return new StreamResponse() {
+            InputStream inputStream;
+            @Override
+            public void prepareResponse(Response response) {
+                ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+                try {
+                    inputStream = getBlob1().getBinaryStream();
+                } catch (InstanceNotFoundException ex) {
+                    Logger.getLogger("FALLA inputStream1"+VerRopa.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger("FALLA inputStream1"+VerRopa.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                try {
+                    response.setHeader("Content-Length", "" + inputStream.available());
+                }
+                catch (IOException e) {
+                    // Ignore the exception in this simple example.
+                }
+            }
+
+            @Override
+            public String getContentType() {
+                return "png/Image";
+            }
+
+            @Override
+            public InputStream getStream() throws IOException {
+                return inputStream;
+            }
+        };
+    }
     
-  
+       
+    @Inject
+    private PageRenderLinkSource pageLink;
+
+    public Link getImageLink()
+    {
+        return pageLink.createPageRenderLinkWithContext(MiImagen.class,ropa.getIdRopa());
+    }
+
 }
+     
+         
+
+     
+     
+
+            
+        

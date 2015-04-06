@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package es.udc.pojoapp.web.pages.pedido;
 import es.udc.pojo.modelutil.exceptions.InstanceNotFoundException;
 import es.udc.pojoapp.model.lineapedidoservice.LineaPedidoService;
@@ -63,7 +60,9 @@ public class VerPedido {
   @Inject
   private UserService userService;
       
-  
+  @InjectPage
+private DatosPedido datosPedido;
+
   
   @Property
     @Persist(PersistenceConstants.FLASH)
@@ -73,17 +72,29 @@ public class VerPedido {
  
     @Property
     private Boolean myBoolean;
-  
+
  @Inject
- Block t;
- @Inject
- Block f;
- @Inject
- Block n;
+ Block bloque1;
+@Inject
+ Block bloque2;
+    @Inject
+ Block bloque3;
+ 
+   @Persist
+    private int whichCase;
+ 
+    @Inject
+    private Block case1, case2;
  
 
-@InjectPage
-private DatosPedido datosPedido;
+
+    public Block getBloque1() {
+        return bloque1;
+    }
+
+    public void setBloque1(Block bloque1) {
+        this.bloque1 = bloque1;
+    }
 
 
 
@@ -102,8 +113,6 @@ private DatosPedido datosPedido;
     else {Hay = false;}
   
   }
-  
-  
   
   public boolean isVerMensaje() {
     
@@ -183,23 +192,33 @@ private DatosPedido datosPedido;
         }
     }
            
-      public Block getCase() {
-
-        // If myBoolean was an int or enum we could use switch/case logic instead of if/else -
-        // see http://tapestry.apache.org/switching-cases.html
-
+    
+    public Object getCase()
+    {
+        switch (whichCase)
+        {
+            case 1:
+                return case1;
+            case 2:
+                return case2;
+            default:
+                return null;
+        }
+    }
+           
+   /*   public Block getCase() {
         if (myBoolean == null) {
-            return n;
+            return bloque1;
         }
         else if (myBoolean == Boolean.TRUE) {
-            return t;
+            return bloque2;
         }
         else {
-            return f;
+            return bloque3;
         }
     }
       
-      
+      */
   
    
 

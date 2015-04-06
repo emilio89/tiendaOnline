@@ -3,13 +3,10 @@
  * and open the template in the editor.
  */
 package es.udc.pojoapp.web.util;
-
-import es.udc.pojoapp.model.ropa.Ropa;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.tapestry5.annotations.Property;
-import org.apache.tapestry5.annotations.SessionState;
 
 /**
  *
@@ -43,10 +40,10 @@ public class Carrito {
   }
     
     
-    public int calculaPrecio () {
+    public long calculaPrecio () {
     
-    int precio= 0;
-    int precio2= 0;
+    long precio= 0;
+    long precio2= 0;
     Iterator i = productos.iterator();
     LineaCarrito lineaCarrito = null;
         while (i.hasNext()) {

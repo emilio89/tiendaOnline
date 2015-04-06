@@ -45,13 +45,7 @@
 		<filter-name>app</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-        
-        
-              <!-- AÑADIDO POR MIN -->
-      
-              
-              
-      <!-- AÑADIDO POR MIN -->
+       
   
 
 </web-app>
